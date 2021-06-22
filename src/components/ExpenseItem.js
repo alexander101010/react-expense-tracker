@@ -1,22 +1,23 @@
 // import React from 'react';
+import ExpenseDate from './ExpenseDate';
 import './ExpenseItem.css'; // tells build process to consider this css
 
-function ExpenseItem(props) {
-  const month = props.date.toLocaleString('en-US', { month: 'long' });
-  const year = props.date.getFullYear();
-  const day = props.date.toLocaleString('en-US', { day: '2-digit' });
-
+function ExpenseItem({ title, amount, date }) {
+  // return (
+  //   <div className='expense-item'>
+  //     <ExpenseDate date={props.date} />
+  //     <div className='expense-item__description'>
+  //       <h2>{props.title}</h2>
+  //       <div className='expense-item__price'>{`${props.amount}€`}</div>
+  //     </div>
+  //   </div>
+  // );
   return (
     <div className='expense-item'>
-      <div>
-        <div className='date-month'>{month}</div>
-        <div className='date-year'>{year}</div>
-        <div className='date-day'>{day}</div>
-      </div>
-
+      <ExpenseDate date={date} />
       <div className='expense-item__description'>
-        <h2>{props.title}</h2>
-        <div className='expense-item__price'>{`${props.amount}€`}</div>
+        <h2>{title}</h2>
+        <div className='expense-item__price'>{`${amount}€`}</div>
       </div>
     </div>
   );

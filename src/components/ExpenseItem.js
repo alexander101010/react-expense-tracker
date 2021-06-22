@@ -1,5 +1,6 @@
 // import React from 'react';
 import ExpenseDate from './ExpenseDate';
+import Card from './Card';
 import './ExpenseItem.css'; // tells build process to consider this css
 
 function ExpenseItem({ title, amount, date }) {
@@ -13,13 +14,13 @@ function ExpenseItem({ title, amount, date }) {
   //   </div>
   // );
   return (
-    <div className='expense-item'>
+    <Card className='expense-item'>
       <ExpenseDate date={date} />
       <div className='expense-item__description'>
         <h2>{title}</h2>
         <div className='expense-item__price'>{`${amount}€`}</div>
       </div>
-    </div>
+    </Card>
   );
 }
 

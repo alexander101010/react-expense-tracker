@@ -5,7 +5,7 @@ import Card from '../UI/Card';
 
 import './ExpenseItem.css'; // tells build process to consider this css
 
-function ExpenseItem({ title, amount, date }) {
+const ExpenseItem = ({ title, amount, date }) => {
   // using destructuring with props
   // return (
   //   <div className='expense-item'>
@@ -25,6 +25,6 @@ function ExpenseItem({ title, amount, date }) {
       </div>
     </Card>
   );
-}
+};
 
 export default ExpenseItem;

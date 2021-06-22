@@ -1,9 +1,12 @@
-// import React from 'react';
+import React from 'react';
+
 import ExpenseDate from './ExpenseDate';
-import Card from './Card';
+import Card from '../UI/Card';
+
 import './ExpenseItem.css'; // tells build process to consider this css
 
 function ExpenseItem({ title, amount, date }) {
+  // using destructuring with props
   // return (
   //   <div className='expense-item'>
   //     <ExpenseDate date={props.date} />

@@ -56,3 +56,8 @@
     padding: 0.5rem 1.5rem;
   }
 }
+
+/* Hide the button because its ugly */
+.displayNone {
+  display: none;
+}

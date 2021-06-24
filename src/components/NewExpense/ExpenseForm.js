@@ -7,6 +7,13 @@ const ExpenseForm = (props) => {
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
 
+  const resetForm = () => {
+    // Clear fields with 2-way binding with dynamically assigned value attribute on form input
+    setEnteredTitle('');
+    setEnteredAmount('');
+    setEnteredDate('');
+  };
+
   // single state approach
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: '',
@@ -16,14 +23,6 @@ const ExpenseForm = (props) => {
 
   const titleChangeHandler = (e) => {
     setEnteredTitle(e.target.value); // with multiple states
-
-    // single state approach
-    // setUserInput((prevState)=> {
-    //   return {
-    //     ...prevState,
-    //     enteredTitle: e.target.value
-    //   }
-    // })
   };
 
   const amountChangeHandler = (e) => {
@@ -42,16 +41,17 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate),
     };
     console.log(expenseData);
-    // console.log(`New Expense: ${enteredDate} ${enteredTitle} ${enteredAmount}`);
 
-    // function onSaveExpenseData passed as props from NewExpense
     props.onSaveExpenseData(expenseData);
 
-    // Clear fields with 2-way binding with dynamically assigned value attribute on form input
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    resetForm();
   };
+
+  // const cancelBtnClickHandler = (e) => {
+  //   e.preventDefault(); // prevents form from submitting - do this by setting type of button to button rather than submit
+  //   props.onCancel(); // call this in onClick instead.
+  //   resetForm();
+  // };
 
   return (
     <form onSubmit={formSubmitHandler}>
@@ -60,6 +60,7 @@ const ExpenseForm = (props) => {
           <label>Title</label>
           <input
             type='text'
+            required
             value={enteredTitle}
             onChange={titleChangeHandler}
           />
@@ -68,6 +69,7 @@ const ExpenseForm = (props) => {
           <label>Amount</label>
           <input
             type='number'
+            required
             min='0.01'
             step='0.01'
             value={enteredAmount}
@@ -77,6 +79,7 @@ const ExpenseForm = (props) => {
         <div className='new-expense__control'>
           <label>Date</label>
           <input
+            required
             type='date'
             min='2019-01-01'
             max='2022-12-31'
@@ -86,6 +89,9 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className='new-expense__actions'>
+        <button type='button' onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type='submit'>Add Expense</button>
       </div>
     </form>

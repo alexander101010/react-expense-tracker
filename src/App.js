@@ -35,16 +35,12 @@ function App() {
   const [expenses, setExpenses] = useState(initialExpenses);
 
   const addExpenseHandler = (addedExpense) => {
-    console.log('In App.js');
-    console.log(addedExpense);
-    // expenses.push(addedExpense);
     setExpenses((prevState) => [addedExpense, ...prevState]);
   };
 
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      {/* <ExpenseList expenses={expenses} /> */}
       <Expenses expenses={expenses} />
     </div>
   );
